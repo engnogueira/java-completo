@@ -4,6 +4,7 @@ package application;
 import java.sql.*;
 
 import db.DB;
+import db.DbIntegrityException;
 
 public class Main {
 
@@ -15,19 +16,16 @@ public class Main {
         try {
             conn = DB.getConnection();
             st = conn.prepareStatement(
-                "UPDATE seller "
-                    + "SET BaseSalary = BaseSalary = ?"
+                "DELETE FROM department "
                     + "WHERE "
-                    + "(DepartmentId = ?)"
-            );
-            st.setDouble(1, 200.0);
-            st.setInt(2, 2);
+                    + "Id = ?");
+            st.setInt(1, 5);
 
             int rowsAffected = st.executeUpdate();
             System.out.println("Done! Rows affected: " + rowsAffected);
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            throw new DbIntegrityException(e.getMessage());
         }
         finally {
             DB.closeStatement(st);
@@ -65,7 +63,7 @@ public class Main {
 //
 //          try {
 //              conn = DB.getConnection();
-/// /                EXAMPLE 1
+//                  EXAMPLE 1
 //              st = conn.prepareStatement(
 //                      "INSERT INTO seller "
 //                      + "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
@@ -79,7 +77,7 @@ public class Main {
 //              st.setDouble(4, 3000.0);
 //              st.setInt(5, 4);
 //
-/// /                EXAMPLE 2
+//                  EXAMPLE 2
 //              st = conn.prepareStatement(
 //                  "INSERT INTO department (Name) VALUES ('D1'), ('D2')",
 //                  Statement.RETURN_GENERATED_KEYS
@@ -106,4 +104,28 @@ public class Main {
 //                finally {
 //                DB.closeStatement(st);
 //                DB.closeConnection();
+//        }
+//
+//        Connection conn = null;
+//        PreparedStatement st = null;
+//
+//        try {
+//             conn = DB.getConnection();
+//             st = conn.prepareStatement(
+//                    "UPDATE seller "
+//                    + "SET BaseSalary = BaseSalary = ?"
+//                    + "WHERE "
+//                    + "(DepartmentId = ?)");
+//             st.setDouble(1, 200.0);
+//             st.setInt(2, 2);
+//
+//             int rowsAffected = st.executeUpdate();
+//             System.out.println("Done! Rows affected: " + rowsAffected);
+//        }
+//        catch (SQLException e) {
+//              e.printStackTrace();
+//        }
+//        finally {
+//            DB.closeStatement(st);
+//            DB.closeConnection();
 //        }
