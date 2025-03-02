@@ -8,8 +8,8 @@ public class Department implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-    private String name;
     private Integer id;
+    private String name;
 
     public Department() {
     }
@@ -49,9 +49,9 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "Department{" +
+        return "Department[" +
             "id=" + getId() +
             ", name='" + getName() + '\'' +
-            '}';
+            ']';
     }
 }
