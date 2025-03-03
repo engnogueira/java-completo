@@ -12,12 +12,12 @@ public class Seller implements Serializable {
     private Date birthDate;
     private Double baseSalary;
 
-    private Department department;
+    private src.model.entities.Department department;
 
     public Seller() {
     }
 
-    public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
+    public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, src.model.entities.Department department) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -26,11 +26,11 @@ public class Seller implements Serializable {
         this.department = department;
     }
 
-    public Department getDepartment() {
+    public src.model.entities.Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(src.model.entities.Department department) {
         this.department = department;
     }
 
@@ -50,8 +50,8 @@ public class Seller implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail(String email) {
+        return this.email;
     }
 
     public void setEmail(String email) {

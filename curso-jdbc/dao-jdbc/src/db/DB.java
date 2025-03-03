@@ -22,7 +22,7 @@ public class DB {
         return conn;
     }
 
-    public static void closeConnection() {
+    public static void closeConnection(ResultSet rs) {
         if (conn != null) {
             try {
                 conn.close();
