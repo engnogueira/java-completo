@@ -1,6 +1,6 @@
-package src.model.dao;
+package model.dao;
 
-import src.model.entities.Seller;
+import model.entities.Seller;
 
 import java.util.List;
 

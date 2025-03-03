@@ -1,4 +1,4 @@
-package src.db;
+package db;
 
 import java.io.Serial;
 

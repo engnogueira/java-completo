@@ -1,17 +1,24 @@
 package application;
 
+import model.dao.DAOFactory;
+import model.dao.SellerDAO;
+import model.entities.Seller;
 
-import src.model.entities.Department;
-import src.model.entities.Seller;
-
-import java.util.Date;
+import java.util.List;
 
 public class Program {
 
     public static void main(String[] args) {
-        Department obj = new Department(1, "Books");
-        Seller seller = new Seller(21, "Bob", "bob@email.com", new Date(), 3000.0, obj);
-        System.out.println(obj);
+
+        SellerDAO sellerDAO = DAOFactory.createSellerDAO();
+
+        System.out.println("=== TEST 1: seller findById ===");
+        Seller seller = sellerDAO.findById(3);
         System.out.println(seller);
+
+        System.out.println("\n=== TEST 2: seller findAll ===");
+        List<Seller> listSeller = sellerDAO.findAll();
+        listSeller.forEach(System.out::println);
+
     }
 }

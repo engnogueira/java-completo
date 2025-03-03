@@ -1,11 +1,14 @@
-package src.model.dao;
+package model.dao;
 
-import src.model.dao.impl.SellerDAOImplementsJDBC;
+import model.dao.impl.SellerDaoJDBC;
+import db.DB;
+
+import java.sql.Connection;
 
 public class DAOFactory {
 
     public static SellerDAO createSellerDAO() {
-        return new SellerDAOImplementsJDBC();
+        return new SellerDaoJDBC((Connection) DB.getConnection());
     }
 
 }
